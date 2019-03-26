@@ -77,8 +77,8 @@ services:
 
 
 **知识点：**
-1.docker-logging-driver 日志驱动使用：syslog。
-2.container-log导入syslog
-3.syslog接入elk
-4.curl $NGINX-IP:8080 ，产生一些nginx日志
-5.登录：$ip:5601 查看
+1. docker-logging-driver 日志驱动使用：syslog。
+2. container-log导入syslog
+3. syslog接入elk
+4. curl $NGINX-IP:8080 ，产生一些nginx日志
+5. 登录：$ip:5601 查看
