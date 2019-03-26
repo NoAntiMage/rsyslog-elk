@@ -54,10 +54,9 @@ output {
 /elk
 docker-compose up -d
 
-### 启动nginx测试一下
+### 配置之后、启动nginx测试一下
 /nginx
-docker-compose up -d
-
+cat docker-compose.yml
 
 ```yml
 services:
@@ -66,13 +65,14 @@ services:
     logging:
       driver: syslog
       options:
-        syslog-address: "tcp://192.168.253.153:514"
+        syslog-address: "tcp://${SYSLOG_SERVER}:514"
         tag: "{{.Name}}.{{.ID}}"
     ports:
       - "8080:80"
     restart: always
 
 ```
+docker-compose up -d
 
 
 
