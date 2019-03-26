@@ -1,17 +1,5 @@
 elk+syslog
-
-
-#docker-logging-driver使用syslog
- cat > /etc/docker/daemon.json << EOF
-{
-   "log-driver": "syslog",
-   "log-opts": {
-     "syslog-address": "tcp://{SYSLOG_SERVER_IP}:514"
-   }
-}
-EOF
-
-systemctl restart docker
+https://github.com/NoAntiMage/rsyslog-elk
 
 #启动elk+syslog
 docker-compose.yml
@@ -243,6 +231,19 @@ rsyslogd 8.24.0, compiled with:
     Runtime Instrumentation (slow code):    No
     uuid support:               Yes
     Number of Bits in RainerScript integers: 64
+
+
+#docker-logging-driver使用syslog
+ cat > /etc/docker/daemon.json << EOF
+{
+   "log-driver": "syslog",
+   "log-opts": {
+     "syslog-address": "tcp://{SYSLOG_SERVER_IP}:514"
+   }
+}
+EOF
+
+systemctl restart docker
 
 vi /etc/rsyslog.conf
 $ModLoad imtcp
