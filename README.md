@@ -1,7 +1,7 @@
-#elk+syslog
+# elk+syslog
 https://github.com/NoAntiMage/rsyslog-elk
 
-###启动elk+syslog
+### 启动elk+syslog
 
 docker-compose.yml
 ```
@@ -17,7 +17,7 @@ services:
     restart: always
 ```
 
-###配置syslog
+### 配置syslog
 cat /rsyslog.d/01-json-template.conf
 ```
 template(name="json_lines"
@@ -41,7 +41,7 @@ cat 60-logstash.conf
 *.* @@${LOGSTASH_SERVER_IP}:${LOGSTASH_SERVER_PORT};json_lines
 ```
 
-###启动elk
+### 启动elk
 docker-compose.yml
 
 ```
@@ -134,7 +134,7 @@ https://zhuanlan.zhihu.com/p/24912074
 需求：docker 日志 自动 保存为  YYYY-MM-DD-HH.log的形式
 调研步骤：
 
-###1. 了解docker-log ，确认docker-log的log-driver类型
+### 1. 了解docker-log ，确认docker-log的log-driver类型
 https://docs.docker.com/config/containers/logging/configure/
 
 json-file	The logs are formatted as JSON. The default logging driver for Docker. [查询日志保存路径
@@ -174,17 +174,17 @@ docker info | grep 'Logging Driver'
 
 
 
-###2. 查询哪种日志 log-driver 符合条件
+### 2. 查询哪种日志 log-driver 符合条件
    2.1 官方都不符合 x
    2.2 三方log-driver  x
 
 
 
 
-###3. 继续做下去耗时较多，考虑elk
+### 3. 继续做下去耗时较多，考虑elk
  logging-driver使用：syslog，将docker容器日志输出到syslog，syslog接入elk
 
-###3.1 docker-log-driver改为 syslog
+### 3.1 docker-log-driver改为 syslog
 ```
  cat > /etc/docker/daemon.json << EOF
 {
@@ -198,7 +198,7 @@ EOF
 
 systemctl restart docker 
 
-###3.2 Rsyslog服务开启
+### 3.2 Rsyslog服务开启
 
 docker-compose.yml
 ```
@@ -217,12 +217,12 @@ services:
 
 
 
-###3.3 logstash 收集syslog
+### 3.3 logstash 收集syslog
 
 docker-compose.yml
 
 
-###3.4 启动nginx 产生一些日志测试一下
+### 3.4 启动nginx 产生一些日志测试一下
 
 
 知识点：
@@ -245,7 +245,7 @@ rsyslogd 8.24.0, compiled with:
     Number of Bits in RainerScript integers: 64
 ```
 
-###docker-logging-driver使用syslog
+### docker-logging-driver使用syslog
 ```
  cat > /etc/docker/daemon.json << EOF
 {
