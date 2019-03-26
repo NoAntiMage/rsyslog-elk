@@ -102,8 +102,11 @@ networks:
 
   elk:
     driver: bridge
+```
 
 logstash.conf
+
+```
 input {
         tcp {
                 port => 5000
