@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx:alpine 
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "tcp://192.168.253.153:514" 
+        tag: "{{.Name}}.{{.ID}}"
+    ports:
+      - "8080:80"
+    restart: always
+

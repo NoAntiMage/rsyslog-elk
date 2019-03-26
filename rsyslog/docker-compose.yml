@@ -1,0 +1,12 @@
+
+version: '2'
+services:
+  syslog:
+    image: voxxit/rsyslog
+    ports:
+      - "514:514"
+      - "514:514/udp"
+    volumes:
+      - ./rsyslog.d:/etc/rsyslog.d
+    restart: always
+
